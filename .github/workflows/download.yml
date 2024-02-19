@@ -1,0 +1,16 @@
+name: Descargar horario ITFIP A2024
+on: [push, workflow_dispatch]
+jobs:
+
+  descarga-horario:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Descargar horario ITFIP A2024
+        run: |
+          wget "https://itfip.edu.co/wp-content/uploads/Transparencia/Documentos-2024/Semestre-A-2024/Horarios-semestre-A-2024/Facultad-Ingenieria-y-Ciencias-Agroindustriales/Programa-Ingenieria-de-Sistemas/HORARIOS-ING-DE-SISTEMAS-DIA.pdf"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: HORARIOS-ING-DE-SISTEMAS-DIA
+          path: HORARIOS-ING-DE-SISTEMAS-DIA.pdf
